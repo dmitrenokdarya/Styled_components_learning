@@ -1,26 +1,21 @@
 import './App.css';
 import styled from 'styled-components';
-import { StyledBtn, SuperBtn } from './components/Button.styled';
-import { Link } from './components/Link';
-import { Menu } from './components/Menu';
-import { GlobalStyles } from './styles/GlobalStyles';
+import { StyledBtn } from './components/Button.styled';
+import { Link } from './components/Link.styled';
+import { Menu } from './components/Menu.styled';
+import { myTheme } from './styles/Theme.styled';
 
 
 function App() {
   return (
     <div className="App">
       <BoxDiv>
-        <Menu>
-          <ul>
-            <li><a href="">menu item 1</a></li>
-            <li><a href="">menu item 2</a></li>
-            <li><a href="">menu item 3</a></li>
-          </ul>
-        </Menu>
-        <StyledBtn>Hello</StyledBtn> 
-        <StyledBtn as={Link} href={"#"}>LinkComponent</StyledBtn>
-        <StyledBtn as="a" href={"#"}>Hello</StyledBtn> 
-        <SuperBtn>SuperButton♥</SuperBtn>
+        {/* <StyledBtn color={"blue"} fontSize={"20px"}>Hello</StyledBtn> 
+        <StyledBtn color={"black"}>Hello</StyledBtn> 
+        <StyledBtn fontSize={"30px"}>Hello</StyledBtn>  */}
+
+        <StyledBtn color={myTheme.color.primary} btnType={"primary"}>Hello</StyledBtn> 
+        <StyledBtn color={myTheme.color.secondary} btnType={"outline"}>Hello</StyledBtn> 
       </BoxDiv>
     </div>
   );
@@ -31,6 +26,8 @@ export default App;
 const BoxDiv = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
   gap: 20px;
   button{
     cursor:pointer;
@@ -38,4 +35,8 @@ const BoxDiv = styled.div`
   ${Link}{
     cursor:zoom-in;
   };
+
+  @media ${myTheme.media.mobile} {
+    flex-direction: column;
+  }
 `
